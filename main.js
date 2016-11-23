@@ -16,6 +16,7 @@ function animate() {
     var rect = arr[i];
 
     ctx.fillRect(rect.x, rect.y+=speed, 20, 20);
+    ctx.fillStyle = rect.color;
     
   }
 
