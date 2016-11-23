@@ -11,9 +11,10 @@ function animate() {
   if(currentPos >= canvas.clientHeight) {
     currentPos = 0;
   }
+
   for(i in arr){
     var rect = arr[i];
-    ctx.fillRect(rect.x, rect.y, 20, 20);
+    
     
   }
 
@@ -42,7 +43,7 @@ function Rect(x, y, color, speed){
 function  RectFactory(){
   this.create =  function(){
     var x = 620 * Math.random()|0;
-    var y = y;
+    var y = 0;
     var color = getRndColor();
     var speed = 4 * Math.random()|0;
     return new Rect(x, y, color, speed);
