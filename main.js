@@ -42,17 +42,17 @@ var rect = new Rect(x, y, color, speed);
 var arr = [];
 arr.push(rect);
 
-function  RectFactory(x, y, color, speed){
-  this.x = 620 * Math.random()|0;
-  this.y = y;
-  this.color = getRndColor();
-  this.speed = 4 * Math.random()|0;
-}
-
-RectFactory.prototype = {
-  constructor: RectFactory,
-
-  makeRect: function() {
-    return new Shapes.Rect({ x:this.x, y:this.y, color:this.color, speed:this.speed}); 
+function  RectFactory(){
+  this.create =  function(){
+    var x = 620 * Math.random()|0;
+    var y = y;
+    var color = getRndColor();
+    var speed = 4 * Math.random()|0;
+    return new Rect(x, y, color, speed);
   }
+  
 }
+
+var factory = new RectFactory();
+var someRect = factory.create();
+console.log(someRect);
