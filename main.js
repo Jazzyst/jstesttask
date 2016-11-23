@@ -7,8 +7,8 @@ function animate() {
 
   ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);  
   ctx.fillRect(320, currentPos, 20, 20);
+  currentPos += 1;
   
-  ctx.fillStyle = getRndColor(); 
 
   // ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 50%, 50%)';
   if(currentPos >= canvas.clientHeight) {
@@ -18,9 +18,7 @@ function animate() {
   
   for(i in arr){
     var rect = arr[i];
-    this.x = 620 * Math.random()|0;
-    this.y = 4 * Math.random()|0;
-    currentPos  =  this.speed;
+    ctx.fillRect(rect.x, rect.y, 20, 20);
     
   }
 }
@@ -43,3 +41,18 @@ function Rect(x, y, color, speed){
 var rect = new Rect(x, y, color, speed);
 var arr = [];
 arr.push(rect);
+
+function  RectFactory(x, y, color, speed){
+  this.x = 620 * Math.random()|0;
+  this.y = y;
+  this.color = getRndColor();
+  this.speed = 4 * Math.random()|0;
+}
+
+RectFactory.prototype = {
+  constructor: RectFactory,
+
+  makeRect: function() {
+    return new Shapes.Rect({ x:this.x, y:this.y, color:this.color, speed:this.speed}); 
+  }
+}
