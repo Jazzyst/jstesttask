@@ -8,23 +8,22 @@ function animate() {
   ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);  
   ctx.fillRect(320, currentPos, 20, 20);
   currentPos += 1;
-  
-
-  // ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 50%, 50%)';
   if(currentPos >= canvas.clientHeight) {
     currentPos = 0;
   }
-  requestAnimationFrame(animate);
-  
   for(i in arr){
     var rect = arr[i];
     ctx.fillRect(rect.x, rect.y, 20, 20);
     
   }
+
+  requestAnimationFrame(animate);
+  
+  
 }
 
 document.body.onload = animate;
-
+// ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 50%, 50%)';
 function getRndColor() {
     var r = 255*Math.random()|0,
         g = 255*Math.random()|0,
@@ -38,9 +37,7 @@ function Rect(x, y, color, speed){
   this.color = color;
   this.speed = speed;
 }
-var rect = new Rect(x, y, color, speed);
-var arr = [];
-arr.push(rect);
+
 
 function  RectFactory(){
   this.create =  function(){
@@ -56,3 +53,5 @@ function  RectFactory(){
 var factory = new RectFactory();
 var someRect = factory.create();
 console.log(someRect);
+var arr = [];
+arr.push(someRect);
