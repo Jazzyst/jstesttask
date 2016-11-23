@@ -4,10 +4,10 @@ var currentPos = 0;
 function animate() {  
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');  
-  ctx.fillRect(rect.x, rect.y, 20, 20);
+  // ctx.fillRect(rect.x, rect.y, 20, 20);
   ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);  
  
-  
+
   if(currentPos >= canvas.clientHeight) {
     currentPos = 0;
   }
@@ -15,7 +15,7 @@ function animate() {
   for(i in arr){
     var rect = arr[i];
 
-    ctx.fillRect(rect.x, rect.y+=speed, 20, 20);
+    ctx.fillRect(rect.x, rect.y+=rect.speed, 20, 20);
     ctx.fillStyle = rect.color;
     
   }
@@ -47,7 +47,7 @@ function  RectFactory(){
     var x = 620 * Math.random()|0;
     var y = 0;
     var color = getRndColor();
-    var speed = 4 * Math.random()|0;
+    var speed = Math.random() * (6 - 1) + 1;
     return new Rect(x, y, color, speed);
   }
   
