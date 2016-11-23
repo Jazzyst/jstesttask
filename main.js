@@ -14,7 +14,7 @@ function animate() {
 
   for(i in arr){
     var rect = arr[i];
-    arr[i];
+    ctx.fillRect(rect.x, rect.y, 20, 20);
     
   }
 
