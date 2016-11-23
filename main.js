@@ -6,8 +6,8 @@ function animate() {
   var ctx = canvas.getContext('2d');  
 
   ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);  
+  ctx.fillRect(320, currentPos, 20, 20);
   
-  currentPos +=1;
   ctx.fillStyle = getRndColor(); 
 
   // ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 50%, 50%)';
@@ -16,9 +16,12 @@ function animate() {
   }
   requestAnimationFrame(animate);
   
-  for(var i = 0; i < arr.length; i++){
-    y++;
-    ctx.fillRect(rect.x, rect.y, 20, 20);
+  for(i in arr){
+    var rect = arr[i];
+    this.x = 620 * Math.random()|0;
+    this.y = 4 * Math.random()|0;
+    currentPos  =  this.speed;
+    
   }
 }
 
@@ -37,7 +40,6 @@ function Rect(x, y, color, speed){
   this.color = color;
   this.speed = speed;
 }
-
 var rect = new Rect(x, y, color, speed);
 var arr = [];
 arr.push(rect);
