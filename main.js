@@ -4,17 +4,18 @@ var currentPos = 0;
 function animate() {  
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');  
-
+  ctx.fillRect(rect.x, rect.y, 20, 20);
   ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);  
  
-  currentPos += 1;
+  
   if(currentPos >= canvas.clientHeight) {
     currentPos = 0;
   }
 
   for(i in arr){
     var rect = arr[i];
-    ctx.fillRect(rect.x, rect.y, 20, 20);
+
+    ctx.fillRect(rect.x, rect.y+=speed, 20, 20);
     
   }
 
