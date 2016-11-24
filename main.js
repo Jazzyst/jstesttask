@@ -4,12 +4,13 @@ var currentPos = 0;
 function animate() {  
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');  
-  // ctx.fillRect(rect.x, rect.y, 20, 20);
+ 
   ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);  
  
 
   if(currentPos >= canvas.clientHeight) {
     currentPos = 0;
+
   }
 
   for(i in arr){
@@ -58,3 +59,16 @@ var someRect = factory.create();
 console.log(someRect);
 var arr = [];
 arr.push(someRect);
+
+function init() {
+    var myFunction = function() {
+        animate();
+        var rand = Math.round(Math.random() * (3000 - 500)) + 500; // generate new time (between 3sec and 500"s)
+        setTimeout(myFunction, rand);
+    }
+    myFunction();
+}
+
+(function() {
+    init();
+});
