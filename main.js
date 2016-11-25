@@ -7,6 +7,8 @@ function animate() {
  
   ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);  
  
+   var arr = [];
+  arr.push(someRect);
 
   if(currentPos >= canvas.clientHeight) {
     currentPos = 0;
@@ -48,7 +50,7 @@ function  RectFactory(){
     var x = 620 * Math.random()|0;
     var y = 0;
     var color = getRndColor();
-    var speed = Math.random() * (6 - 1) + 1;
+    var speed = Math.floor(Math.random() * (6 - 1) + 1);
     return new Rect(x, y, color, speed);
   }
   
@@ -57,18 +59,4 @@ function  RectFactory(){
 var factory = new RectFactory();
 var someRect = factory.create();
 console.log(someRect);
-var arr = [];
-arr.push(someRect);
 
-function init() {
-    var myFunction = function() {
-        animate();
-        var rand = Math.round(Math.random() * (3000 - 500)) + 500; // generate new time (between 3sec and 500"s)
-        setTimeout(myFunction, rand);
-    }
-    myFunction();
-}
-
-(function() {
-    init();
-});
