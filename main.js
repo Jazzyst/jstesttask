@@ -1,16 +1,16 @@
 
-var currentPos = 0;
+var currentPos = 0; // объявляем переменную текущая позиция
 
-function animate() {  
-  var canvas = document.getElementById('canvas');
+function animate() {  // функция отрисовки
+  var canvas = document.getElementById('canvas'); // инициализируем игровое поле(канвас)
   var ctx = canvas.getContext('2d');  
  
-  ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);  
+  ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);  //очищаем канвас
  
-   var arr = [];
-  arr.push(someRect);
+   var arr = [];//создаем массив
+  arr.push(someRect);// добавляем в массив квадрат
 
-  if(currentPos >= canvas.clientHeight) {
+  if(currentPos >= canvas.clientHeight) {//проверяем если текущая позиция квадрата >высоты канваса то обнуляем
     currentPos = 0;
 
   }
