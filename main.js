@@ -15,15 +15,15 @@ function animate() {  // функция отрисовки
 
   }
 
-  for(i in arr){
-    var rect = arr[i];
+  for(i in arr){ //перебираем массив
+    var rect = arr[i]; //берем отдельный элемент массива
 
-    ctx.fillRect(rect.x, rect.y+=rect.speed, 20, 20);
-    ctx.fillStyle = rect.color;
+    ctx.fillRect(rect.x, rect.y+=rect.speed, 20, 20);//отрисовываем квадрат
+    ctx.fillStyle = rect.color; // красим квадрат
     
   }
 
-  requestAnimationFrame(animate);
+  requestAnimationFrame(animate);//запускаем  анимейт
   
   
 }
