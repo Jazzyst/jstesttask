@@ -1,49 +1,40 @@
 
-var currentPos = 0; // объявляем переменную текущая позиция
-var arr = [];
-var x = 0;
-function animate() {  // функция отрисовки
-  var canvas = document.getElementById('canvas'); // инициализируем игровое поле(канвас)
+var currentPos = 0; 
+var arr =[];
+var x =0;
+function animate() {  
+  var canvas = document.getElementById('canvas'); 
   var ctx = canvas.getContext('2d');  
  
-  ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);  //очищаем канвас
+  ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth); 
   
-   //создаем массив
-  
-  function add() {
-  console.log("arr length:" + arr.length);
-  if(x<5) {
+ if(x<5) {
      arr.push(someRect);
      x++;
   }
-  add();
-}
-add()
-  // добавляем в массив квадрат
+  animate();
 
-  if(currentPos >= canvas.clientHeight) {//проверяем если текущая позиция квадрата >высоты канваса то обнуляем
+  if(currentPos >= canvas.clientHeight) {
     currentPos = 0;
 
   }
 
-  for(i in arr){ //перебираем массив
-    var rect = arr[i]; //берем отдельный элемент массива
+  for(i in arr){ 
+    var rect = arr[i];
 
-    ctx.fillRect(rect.x, rect.y+=rect.speed, 20, 20);//отрисовываем квадрат
-    ctx.fillStyle = rect.color; // красим квадрат
+    ctx.fillRect(rect.x, rect.y+=rect.speed, 20, 20);
+    ctx.fillStyle = rect.color;
 
- }
+  }
     var countTry = 0;
     countTry++;
     if(countTry < 5){
       requestAnimationFrame(animate)
     }
 //запускаем  анимейт
-
-
-  
-  
+ 
 }
+animate();
 
 document.body.onload = animate;
 // ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 50%, 50%)';
