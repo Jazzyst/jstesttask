@@ -1,18 +1,18 @@
 
 var currentPos = 0; 
-var arr =[];
-var x =0;
+var arr = [];
+var x = 0;
 function animate() {  
   var canvas = document.getElementById('canvas'); 
   var ctx = canvas.getContext('2d');  
  
   ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth); 
-  
+console.log("arr length:" + arr.length);
  if(x<5) {
      arr.push(someRect);
      x++;
   }
-  animate();
+
 
   if(currentPos >= canvas.clientHeight) {
     currentPos = 0;
@@ -34,7 +34,7 @@ function animate() {
 //запускаем  анимейт
  
 }
-animate();
+
 
 document.body.onload = animate;
 // ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 50%, 50%)';
