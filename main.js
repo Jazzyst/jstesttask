@@ -10,13 +10,15 @@ function animate() {
   ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth); 
 
 
- if(x<5) {
-  
+ 
+   var rand = Math.random()*100;
+if(rand < 6) {
+  x++;
   arr.push(factory.create());
-   x++;
+}
+  
      console.log(arr[i])
-  }
-
+  
 
   if(currentPos >= canvas.clientHeight) {
     currentPos = 0;
@@ -63,7 +65,7 @@ function  RectFactory(){
     var x = 620 * Math.random()|0;
     var y = 0;
     var color = getRndColor();
-    var speed = Math.floor(Math.random() * (6 - 1) + 1);
+    var speed = Math.floor(Math.random() * (4 - 1) + 1);
     return new Rect(x, y, color, speed);
   }
   
