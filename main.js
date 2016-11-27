@@ -20,30 +20,28 @@ if(rand < 3) {
   
      console.log(arr[i])
   
-// var arr = ["a", "b", "c"];
-//  for(var i = arr.length - 1; i >= 0; i--) {
-//       arr.splice(i, 1);
-//     }
-//     console.log(arr);
+
 
   
 
 
-  for(i in arr){ 
-    var rect = arr[i];
+  for(i in arr){ // перебираем все квадраты в массиве
+    var rect = arr[i]; //  получаем отдельный квадрат, который нужно  отрисовать
 
-    ctx.fillRect(rect.x, rect.y+=rect.speed, 20, 20);
+    ctx.fillRect(rect.x, rect.y+=rect.speed, 20, 20);//  отрисовываем, 
     ctx.fillStyle = rect.color;
 
-    
-   if (rect.y >= canvas.clientHeight) {
-    for(var i = arr.length - 1; i >= 0; i--) {
-      arr.splice(i, 1);
+
+   if (rect.y >= canvas.clientHeight) {/* если у квадрата больше высоты массива,
+    для того чтоб  удалить этот квадрат из массива*/
+  
+      arr.splice(i, 1); // начиная с i удаляем 1 квадрат
+      console.log(arr);
     }
    
-}
 
-console.log(arr);
+
+
 
 
   }
@@ -87,5 +85,5 @@ function  RectFactory(){
 
 var factory = new RectFactory();
 var someRect = factory.create();
-console.log(someRect);
+// console.log(someRect);
 
