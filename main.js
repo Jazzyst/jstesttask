@@ -1,5 +1,5 @@
 
-var currentPos = 0; 
+
 var arr = [];
 var x = 0;
 var i = 0;
@@ -12,7 +12,7 @@ function animate() {
 
  
    var rand = Math.random()*100;
-if(rand < 6) {
+if(rand < 3) {
   x++;
   arr.push(factory.create());
 }
@@ -20,10 +20,14 @@ if(rand < 6) {
      console.log(arr[i])
   
 
-  if(currentPos >= canvas.clientHeight) {
-    currentPos = 0;
 
-  }
+   if (arr.indexOf(arr[i]).y >= canvas.clientHeight) {
+  delete arr[arr.indexOf(arr[i])];
+}
+
+console.log(arr);
+
+  
 
 
   for(i in arr){ 
