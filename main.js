@@ -2,6 +2,7 @@
 
 var arr = [];
 var x = 0;
+
 var i = 0;
 function animate() {  
   var canvas = document.getElementById('canvas'); 
@@ -19,13 +20,11 @@ if(rand < 3) {
   
      console.log(arr[i])
   
-
-
-   if (arr.indexOf(arr[i]).y >= canvas.clientHeight) {
-  delete arr[arr.indexOf(arr[i])];
-}
-
-console.log(arr);
+// var arr = ["a", "b", "c"];
+//  for(var i = arr.length - 1; i >= 0; i--) {
+//       arr.splice(i, 1);
+//     }
+//     console.log(arr);
 
   
 
@@ -35,6 +34,17 @@ console.log(arr);
 
     ctx.fillRect(rect.x, rect.y+=rect.speed, 20, 20);
     ctx.fillStyle = rect.color;
+
+    
+   if (rect.y >= canvas.clientHeight) {
+    for(var i = arr.length - 1; i >= 0; i--) {
+      arr.splice(i, 1);
+    }
+   
+}
+
+console.log(arr);
+
 
   }
     var countTry = 0;
