@@ -1,12 +1,5 @@
 function start() {
-	document.getElementById("start").onclick = function() { 
-            main(); 
-        };
 
-  document.getElementById("stop").onclick = function() { 
-             ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);
-        };
-// ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 50%, 50%)';
     function getRndColor() {
         var r = 255 * Math.random() | 0,
                 g = 255 * Math.random() | 0,
@@ -27,7 +20,7 @@ function start() {
             var x = 620 * Math.random() | 0;
             var y = 0;
             var color = getRndColor();
-            var speed = Math.floor(Math.random() * 100 + 10);
+            var speed = Math.floor(Math.random() * 100 + 1);
             return new Rect(x, y, color, speed);
         }
 
@@ -36,8 +29,40 @@ function start() {
     var factory = new RectFactory();
     var arr = [];
 
+    
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
+    var scoreContrainer = document.getElementById('score');
+    var score = 0;
+    var gameStarted = false;
+    
+    canvas.onclick = function(event){
+        var rect = canvas.getBoundingClientRect();
+        var x = event.clientX - rect.left;
+        var y = event.clientY - rect.top;
+        
+        for (var i in arr) {
+            var item = arr[i];
+
+            if (x >= item.x && x<= (item.x + 20) && y >= item.y && y<= (item.y + 20)) {
+                arr.splice(i, 1);
+                score++;
+                scoreContrainer.innerText = score;
+            }
+        }
+    };
+    
+    document.getElementById('start').onclick = function() {
+        gameStarted = true;
+        main();
+    };
+    
+    document.getElementById('stop').onclick = function() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+ 				arr = [];
+        score = 0;
+        gameStarted = false;
+    };
 
     function animate(modifier) {
         ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientWidth);
@@ -48,23 +73,21 @@ function start() {
             arr.push(item);
         }
 
-        for (i in arr) { // перебираем все квадраты в массиве
-            var item = arr[i]; //  получаем отдельный квадрат, который нужно  отрисовать
+        for (i in arr) { 
+            var item = arr[i]; 
             item.y = item.y + (item.speed * modifier);
 
             ctx.fillStyle = item.color;
-            ctx.fillRect(item.x, item.y, 20, 20);//  отрисовываем, 
+            ctx.fillRect(item.x, item.y, 20, 20);
 
         }
 
-        for (i in arr) { // перебираем все квадраты в массиве
-            var item = arr[i]; //  получаем отдельный квадрат, который нужно  отрисовать
+        for (i in arr) { 
+            var item = arr[i]; 
 
-            if (item.y >= canvas.clientHeight) {/* если у квадрата больше высоты массива,
-             для того чтоб  удалить этот квадрат из массива*/
+            if (item.y >= canvas.clientHeight) {
 
-                arr.splice(i, 1); // начиная с i удаляем 1 квадрат
-
+                arr.splice(i, 1); 
             }
 
         }
@@ -79,13 +102,15 @@ function start() {
 
         then = now;
 
-        requestAnimationFrame(main);
+        if (gameStarted) {
+            requestAnimationFrame(main);
+        }
+
 
 
     }
     var then = Date.now();
 
-    main()
 }
 
 
